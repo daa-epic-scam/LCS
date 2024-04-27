@@ -86,7 +86,7 @@ int main()
     ifstream input_file("input.txt"); // Open the input file
     if (!input_file.is_open())
     {
-        cout << "Failed to open input file" << endl;
+        cout << "File does not exist" << endl;
         return 1;
     }
 
