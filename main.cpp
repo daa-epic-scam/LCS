@@ -22,8 +22,14 @@ int main()
 
     const int m = X.length();
     const int n = Y.length();
-    char B[51][51];
-    int C[51][51];
+    char **B = new char *[m + 1];
+    int **C = new int *[m + 1];
+    for (int i = 0; i <= m; i++)
+    {
+        B[i] = new char[n + 1];
+        C[i] = new int[n + 1];
+    }
+
     char *lcs;
 
     cout << "String 1: " << X << endl;
@@ -57,6 +63,15 @@ int main()
     cout << "LCS: " << lcs << endl;
 
     delete[] lcs; // free allocated memory
+
+    // Free the dynamically allocated memory for B and C
+    for (int i = 0; i <= m; i++)
+    {
+        delete[] B[i];
+        delete[] C[i];
+    }
+    delete[] B;
+    delete[] C;
 
     return 0;
 }

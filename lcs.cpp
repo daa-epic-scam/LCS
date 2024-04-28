@@ -1,10 +1,11 @@
 #include <iostream>
 #include "lcs.h"
+#include <algorithm>
 
 using namespace std;
 
 // C is the LCS number matrix and B is direction matrix, he used arrows, I'm using D,U,L
-void LCS_Length(const char *X, const char *Y, int m, int n, char B[51][51], int C[51][51])
+void LCS_Length(const char *X, const char *Y, int m, int n, char **B, int **C)
 {
     for (int i = 0; i <= m; i++)
     {
@@ -21,7 +22,7 @@ void LCS_Length(const char *X, const char *Y, int m, int n, char B[51][51], int 
     {
         for (int j = 1; j <= n; j++)
         {
-            if (X[i] == Y[j])
+            if (X[i - 1] == Y[j - 1])
             {
                 C[i][j] = C[i - 1][j - 1] + 1;
                 B[i][j] = 'D'; // move diagonally
@@ -54,11 +55,11 @@ void Reverse_String(char *str, int length)
     }
 }
 
-char *ExtractLCS(const char *X, char B[51][51], int m, int n)
+char *ExtractLCS(const char *X, char **B, int m, int n)
 {
     int i = m, j = n; // building bottom up, starting peeche se
     int index = 0;
-    char *lcs = new char[min(m, n) + 1]; // dynamically allocation because length unknowun during compile
+    char *lcs = new char[min(m, n) + 1]; // dynamically allocation because length unknown during compile
     while (i > 0 && j > 0)
     {
         if (B[i][j] == 'D')
