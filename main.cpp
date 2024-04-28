@@ -44,9 +44,9 @@ int main()
     }
 
     cout << "B matrix:" << endl;
-    for (int i = 1; i <= m; i++) // starting from 1 because 0th row and column are 0s
+    for (int i = 0; i <= m; i++)
     {
-        for (int j = 1; j <= n; j++)
+        for (int j = 0; j <= n; j++)
         {
             printf("%4c", B[i][j]);
         }

@@ -9,10 +9,12 @@ void LCS_Length(const char *X, const char *Y, int m, int n, char B[51][51], int 
     for (int i = 0; i <= m; i++)
     {
         C[i][0] = 0;
+        B[i][0] = 'N'; // no direction
     }
     for (int j = 0; j <= n; j++)
     {
         C[0][j] = 0;
+        B[0][j] = 'N'; // no direction
     }
 
     for (int i = 1; i <= m; i++)
