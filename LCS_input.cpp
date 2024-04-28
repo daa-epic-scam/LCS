@@ -83,7 +83,7 @@ void ExtractLCS(const char *X, char B[51][51], int m, int n, char *lcs)
 
 int main()
 {
-    ifstream input_file("./input/input6.txt"); // Open the input file
+    ifstream input_file("./input/input4.txt"); // Open the input file
     if (!input_file.is_open())
     {
         cout << "File does not exist" << endl;

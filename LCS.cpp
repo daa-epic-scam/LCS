@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-// C is the LCS number matrix and B is direction matrix, he used arrows, im using D,U,L
+// C is the LCS number matrix and B is direction matrix, he used arrows, I'm using D,U,L
 void LCS_Length(const char *X, const char *Y, int m, int n, char B[51][51], int C[51][51])
 {
     for (int i = 0; i <= m; i++)
@@ -17,7 +17,7 @@ void LCS_Length(const char *X, const char *Y, int m, int n, char B[51][51], int 
     {
         for (int j = 1; j <= n; j++)
         {
-            if (X[i - 1] == Y[j - 1])
+            if (X[i] == Y[j])
             {
                 C[i][j] = C[i - 1][j - 1] + 1;
                 B[i][j] = 'D'; // move diagonally
@@ -50,11 +50,11 @@ void Reverse_String(char *str, int length)
     }
 }
 
-void ExtractLCS(const char *X, char B[51][51], int m, int n, char *lcs)
+char *ExtractLCS(const char *X, char B[51][51], int m, int n)
 {
     int i = m, j = n; // building bottom up, starting peeche se
     int index = 0;
-
+    char *lcs = new char[min(m, n) + 1]; // dynamically allocation because length unknowun during compile
     while (i > 0 && j > 0)
     {
         if (B[i][j] == 'D')
@@ -72,54 +72,51 @@ void ExtractLCS(const char *X, char B[51][51], int m, int n, char *lcs)
             j--;
         }
     }
-
     lcs[index] = '\0';
-
-    // reverse the string because it was constructed backwards
-    Reverse_String(lcs, index);
+    Reverse_String(lcs, index); // reverse the string because it was constructed backwards
+    return lcs;
 }
 
-// Mukku, can you make another input for this and have test cases? Idk what these test cases will be.
 int main()
 {
-    const int m = 7;
-    const int n = 10;
-    char X[m + 1] = "ABCBABD"; // +1 for \0
-    char Y[n + 1] = "BDCABADASC";
-    int C[51][51]; // both are 50 characters long, idk if its enough, just increase or handle differetly
-    char B[51][51];
-    char lcs[max(m, n) + 1];
+    const int m = 22;
+    const int n = 17;
+    char X[m + 1] = "IDON'TWANTTOKILLMYSELF";
+    char Y[n + 1] = "IWANTTOKILLMYSELF";
+    int C[51][51] = {0};
+    char B[51][51] = {0};
+    char *lcs;
 
-    // print the strings
     cout << "String 1: " << X << endl;
     cout << "String 2: " << Y << endl;
+
     LCS_Length(X, Y, m, n, B, C);
     cout << "Length of LCS: " << C[m][n] << endl;
-    cout << endl;
+
     cout << "C matrix:" << endl;
     for (int i = 0; i <= m; i++)
     {
         for (int j = 0; j <= n; j++)
         {
-            cout << C[i][j] << " ";
+            printf("%4d", C[i][j]);
         }
         cout << endl;
     }
 
-    cout << endl;
-    // can print B from 1 onwards also instead of 0
     cout << "B matrix:" << endl;
-    for (int i = 0; i <= m; i++)
+    for (int i = 1; i <= m; i++) // starting from 1 because 0th row and column are 0s
     {
-        for (int j = 0; j <= n; j++)
+        for (int j = 1; j <= n; j++)
         {
-            cout << B[i][j] << " ";
+            printf("%4c", B[i][j]);
         }
         cout << endl;
     }
 
-    ExtractLCS(X, B, m, n, lcs);
+    lcs = ExtractLCS(X, B, m, n);
     cout << "LCS: " << lcs << endl;
+
+    delete[] lcs; // free allocated memory
 
     return 0;
 }
