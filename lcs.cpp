@@ -1,12 +1,14 @@
 #include <iostream>
 #include "lcs.h"
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
 // C is the LCS number matrix and B is direction matrix, he used arrows, I'm using D,U,L
-void LCS_Length(const char *X, const char *Y, int m, int n, char **B, int **C)
+void LCS_Length(const string &X, const string &Y, int m, int n, char **B, int **C)
 {
+    // intialize the first row and col of B and C
     for (int i = 0; i <= m; i++)
     {
         C[i][0] = 0;
@@ -18,6 +20,7 @@ void LCS_Length(const char *X, const char *Y, int m, int n, char **B, int **C)
         B[0][j] = 'N'; // no direction
     }
 
+    // initialize the rest of B and C as per the subsequence
     for (int i = 1; i <= m; i++)
     {
         for (int j = 1; j <= n; j++)
@@ -41,13 +44,14 @@ void LCS_Length(const char *X, const char *Y, int m, int n, char **B, int **C)
     }
 }
 
-void Reverse_String(char *str, int length)
+void Reverse_String(string &str)
 {
     int start = 0;
-    int end = length - 1;
-    while (start < end)
+    int end = str.length() - 1;
+    while (start < end) // iterate from start through end
     {
-        char temp = str[start];
+        // swap the characters at the beginning and end
+        char temp = str[start]; 
         str[start] = str[end];
         str[end] = temp;
         start++;
@@ -55,29 +59,28 @@ void Reverse_String(char *str, int length)
     }
 }
 
-char *ExtractLCS(const char *X, char **B, int m, int n)
+string ExtractLCS(const string &X, char **B, int m, int n)
 {
     int i = m, j = n; // building bottom up, starting peeche se
-    int index = 0;
-    char *lcs = new char[min(m, n) + 1]; // dynamically allocation because length unknown during compile
-    while (i > 0 && j > 0)
+    string lcs = ""; // empty string to concatenate to
+
+    while (i > 0 && j > 0) // stop when we reach the end of one of the strings
     {
-        if (B[i][j] == 'D')
+        if (B[i][j] == 'D') // concatenate when direction is Diagonal
         {
-            lcs[index++] = X[i - 1];
+            lcs += X[i - 1];
             i--;
             j--;
         }
-        else if (B[i][j] == 'U')
+        else if (B[i][j] == 'U') 
         {
             i--;
         }
-        else if (B[i][j] == 'L')
+        else if (B[i][j] == 'L') 
         {
             j--;
         }
     }
-    lcs[index] = '\0';
-    Reverse_String(lcs, index); // reverse the string because it was constructed backwards
+    Reverse_String(lcs); // reverse the string because it was constructed backwards
     return lcs;
 }

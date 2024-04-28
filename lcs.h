@@ -1,8 +1,10 @@
 #ifndef LCS_H
 #define LCS_H
 
-void LCS_Length(const char *X, const char *Y, int m, int n, char **B, int **C);
-void Reverse_String(char *str, int length);
-void ExtractLCS(const char *X, char **B, int m, int n, char *lcs);
+using namespace std;
+
+void LCS_Length(const string &X, const char *Y, int m, int n, char **B, int **C);
+void Reverse_String(string &str, int length);
+string ExtractLCS(const string &X, char **B, int m, int n);
 
 #endif // LCS_H

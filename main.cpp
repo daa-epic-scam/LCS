@@ -30,12 +30,12 @@ int main()
         C[i] = new int[n + 1];
     }
 
-    char *lcs;
+    string lcs;
 
     cout << "String 1: " << X << endl;
     cout << "String 2: " << Y << endl;
 
-    LCS_Length(X.c_str(), Y.c_str(), m, n, B, C);
+    LCS_Length(X, Y, m, n, B, C);
     cout << "Length of LCS: " << C[m][n] << endl;
     cout << endl;
 
@@ -59,10 +59,8 @@ int main()
         cout << endl;
     }
 
-    lcs = ExtractLCS(X.c_str(), B, m, n);
+    lcs = ExtractLCS(X, B, m, n);
     cout << "LCS: " << lcs << endl;
-
-    delete[] lcs; // free allocated memory
 
     // Free the dynamically allocated memory for B and C
     for (int i = 0; i <= m; i++)
