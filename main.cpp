@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    ifstream input_file("./input/input6.txt"); // Open the input file
+    ifstream input_file("./input/final.txt"); // Open the input file
     if (!input_file.is_open())
     {
         cout << "File does not exist" << endl;
