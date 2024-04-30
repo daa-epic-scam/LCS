@@ -21,15 +21,17 @@ Let X = x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>m</sub> be the first input stri
 
 Let Y = y<sub>1</sub>, y<sub>2</sub>, ..., y<sub>n</sub> be the second input string of length n
 
-1. **Step 1 (Characterization of an LCS)** involves understanding the optimal substructure of the LCS problem, which is a constant-time operation.
+**Step 1 (Characterization of an LCS)** involves understanding the optimal substructure of the LCS problem, which is a constant-time operation.
 
-2. **Step 2 (Recursively defining the length of an LCS)** involves defining the recursive formula for the length of the LCS, which is also a constant-time operation.
+**Step 2 (Recursively defining the length of an LCS)** involves defining the recursive formula for the length of the LCS, which is also a constant-time operation.
 
-3. **Step 3 (Computing the length of LCS)** has a nested loop that runs m * n times, and the operations inside the loop are constant time. Therefore, the time complexity of this step is O(mn).
+**Step 3 (Initialization of first column and row of C Matrix) involves initialization of the first column and first row of the C matrix. The time complexity of this step is O(m) + O(n) which is equal to O(max(m,n)).
 
-4. **Step 4 (Extracting the LCS)** takes O(m + n) time in the worst case, as it traverses through the table B of size (m+1) x (n+1) in a zigzag fashion.
+**Step 4 (Computing the length of LCS)** has a nested loop that runs m * n times, and the operations inside the loop are constant time. Therefore, the time complexity of this step is O(mn).
 
-Since Step 3 dominates the overall time complexity, the overall time complexity of the LCS algorithm is **O(mn)**.
+**Step 5 (Extracting the LCS)** takes O(m + n) time in the worst case, as it traverses through the table B of size (m+1) x (n+1) in a zigzag fashion.
+
+Since Step 4 dominates the overall time complexity, the overall time complexity of the LCS algorithm is **O(mn)**.
 
 ## Space Complexity
 
