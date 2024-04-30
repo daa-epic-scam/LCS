@@ -1,5 +1,4 @@
 #include <iostream>
-#include "lcs.h"
 #include <algorithm>
 #include <string>
 

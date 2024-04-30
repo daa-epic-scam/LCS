@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "lcs.h"
 #include "lcs.cpp"
 
 using namespace std;
