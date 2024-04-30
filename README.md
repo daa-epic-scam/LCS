@@ -25,7 +25,7 @@ Let Y = y<sub>1</sub>, y<sub>2</sub>, ..., y<sub>n</sub> be the second input str
 
 **Step 2 (Recursively defining the length of an LCS)** involves defining the recursive formula for the length of the LCS, which is also a constant-time operation.
 
-**Step 3 (Initialization of first column and row of C Matrix) involves initialization of the first column and first row of the C matrix. The time complexity of this step is O(m) + O(n) which is equal to O(max(m,n)).
+**Step 3 (Initialization of first column and row of C Matrix)** involves initialization of the first column and first row of the C matrix. The time complexity of this step is O(m) + O(n) which is equal to O(max(m,n)).
 
 **Step 4 (Computing the length of LCS)** has a nested loop that runs m * n times, and the operations inside the loop are constant time. Therefore, the time complexity of this step is O(mn).
 
