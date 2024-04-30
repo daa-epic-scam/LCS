@@ -10,3 +10,6 @@ For example, if `s1 = "ABCBDAB"` and `s2 = "BDCABA"`, the longest common subsequ
 
 
 ## Usage
+Compile the file by typing `g++ main.cpp` in the terminal. You can specify your input in a `input.txt` file within the `input` directory and provide the name of the file inside the `main` function in `main.cpp`.
+
+The first line of the `input.txt` file contains the first string, while the second line contains the second string.
