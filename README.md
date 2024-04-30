@@ -21,10 +21,6 @@ Let X = x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>m</sub> be the first input stri
 
 Let Y = y<sub>1</sub>, y<sub>2</sub>, ..., y<sub>n</sub> be the second input string of length n
 
-## Time Complexity
-
-The time complexity of the LCS algorithm is O(mn), where m and n are the lengths of the two input strings X and Y.
-
 1. **Step 1 (Characterization of an LCS)** involves understanding the optimal substructure of the LCS problem, which is a constant-time operation.
 
 2. **Step 2 (Recursively defining the length of an LCS)** involves defining the recursive formula for the length of the LCS, which is also a constant-time operation.
